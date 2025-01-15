@@ -1,0 +1,32 @@
+.cart_button{
+    cursor: pointer;
+    border:none;
+    background-color: white;
+    padding:0.75rem 3rem;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    font-weight: bold;
+    
+   
+}
+.cart_button:hover{
+    color:orangered
+}
+.cart_icon{
+   
+    margin-right: 0.5rem;
+}
+
+.cart_badge{
+    
+    background-color: rgb(12, 155, 91);
+    padding:.3rem .3rem;
+    border-radius: 25px;
+    color: white;
+    margin-right:0.5rem;
+    
+}
+.cart_badge:hover{
+    background-color: rgb(234, 94, 7);
+}
