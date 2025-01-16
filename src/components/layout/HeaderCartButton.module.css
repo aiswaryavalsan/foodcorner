@@ -11,8 +11,9 @@
    
 }
 .cart_button:hover{
-    color:orangered
+    color:orangered;
 }
+    
 .cart_icon{
    
     margin-right: 0.5rem;

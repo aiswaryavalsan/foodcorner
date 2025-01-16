@@ -1,0 +1,18 @@
+.list_items{
+    display:flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+}
+.list_item{
+    list-style: none;
+    
+}
+.image{
+    width:200px;
+    height:200px;
+}
+.wrapper{
+    display:flex;
+    justify-content: space-between;
+}
