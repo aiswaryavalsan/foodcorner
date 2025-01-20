@@ -20,6 +20,10 @@ const Cart = (props) => {
             )
           })}
         </ul>
+        <div className={classes.total}>
+          <h3>Total Amount</h3>
+          <p className={classes.totalAmount}>Rs.{cartCtx.total}</p>
+        </div>
         <button onClick={props.onClose}>close</button>
       </Modal>
     </>

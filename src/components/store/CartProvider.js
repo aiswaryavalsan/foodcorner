@@ -44,7 +44,7 @@ const cartReducer=(state,action)=>{
         updateItems=state.items.map(item=>item.id===action.id.id?updateItem:item)
         
         }
-        updatedTotal-=existingItem.price;
+        updatedTotal=state.total-existingItem.price;
       return{
         items:updateItems,
         total:updatedTotal

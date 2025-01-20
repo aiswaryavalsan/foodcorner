@@ -4,11 +4,12 @@ const CartItem = (props) => {
    
   return (
     <>
-    <div className={classes.cart}>
-        <h4>{props.title}</h4>
-        <p>{props.price}</p>
-      
-        <hr/>
+    <div className={classes['cart-item']}>
+      <h2>{props.title}</h2>
+      <div className={classes.summary}>
+      <span className={classes.price}>Rs.{(props.price).toFixed(2)}</span>
+      <span className={classes.amount}>x{props.amount}</span>
+      </div>
     </div>
     
     </>
