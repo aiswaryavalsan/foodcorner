@@ -1,8 +1,10 @@
 import React from 'react'
-import { MealsData } from '../assets/MealsData'
+import { MealsData } from '../../assets/MealsData'
 import classes from './MealItem.module.css'
 import MealCartForm from './MealCartForm'
+
 const MealItem = () => {
+  
   return (
     <div className={classes.list_items}>
     {
@@ -13,7 +15,7 @@ const MealItem = () => {
          <h3>{item.title}</h3>
          <div className={classes.wrapper}>
          <p>Rs.{item.price.toFixed(2)}</p>
-          <MealCartForm/>
+          <MealCartForm item={item}/>
          </div>
         </li>
       )

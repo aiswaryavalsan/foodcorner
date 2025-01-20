@@ -13,17 +13,17 @@ const CartIcon = () => {
       stroke="#000000"
       transform="matrix(1, 0, 0, 1, 0, 0)"
     >
-      <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+      <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
       <g
         id="SVGRepo_tracerCarrier"
-        stroke-linecap="round"
-        stroke-linejoin="round"
+        strokeLinecap="round"
+        strokeLinejoin="round"
       ></g>
       <g id="SVGRepo_iconCarrier">
         {" "}
         <title>shopping_cart_round [#1137]</title>{" "}
         <desc>Created with Sketch.</desc> <defs> </defs>{" "}
-        <g id="Page-1" stroke-width="0.0002" fill="none" fill-rule="evenodd">
+        <g id="Page-1" strokeWidth="0.0002" fill="none" fillRule="evenodd">
           {" "}
           <g
             id="Dribbble-Light-Preview"

@@ -35,7 +35,7 @@ export const MealsData=[
 
     },
     {
-        id:4,
+        id:5,
         type:'biriyani',
         title:'Chicken Tika biriyani',
         imageUrl:'/assets/meals/biriyanitwo.jpeg',

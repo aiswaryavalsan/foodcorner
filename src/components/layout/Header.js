@@ -3,7 +3,7 @@ import logoImage from '../../assets/th.jpeg'
 import foodTable from '../../assets/food.jpeg'
 import classes from './Header.module.css'
 import HeaderCartButton from './HeaderCartButton'
-const Header = () => {
+const Header = (props) => {
   return (
     <>
     <div className={classes.header}>
@@ -15,7 +15,7 @@ const Header = () => {
         <p className={classes.title}>Food corner</p>
         </div>
        </div>
-      <HeaderCartButton/>
+      <HeaderCartButton onCartShown={props.onCartShown}/>
       
         
     </div>
