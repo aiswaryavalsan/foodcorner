@@ -1,4 +1,4 @@
-import React, { useState,useContext } from 'react'
+import React, { useState,useContext, useEffect } from 'react'
 import classes from './MealCartForm.module.css';
 import CartContext from '../store/cart-context';
 const MealCartForm = (props) => {
@@ -7,13 +7,18 @@ const MealCartForm = (props) => {
     const changeCountHandler=()=>{
         setCount(prevCount=>prevCount+1);
         cartctx.addItemHandler({id:props.item.id,title:props.item.title,price:props.item.price,amount:1})
-        // cartctx.addItemHandler({})
+        
+        
     }
     const countDecrementHandler=()=>{
         setCount(prevCount=>prevCount-1)
         cartctx.removeItemHandler({id:props.item.id})
     }
-    
+    useEffect(()=>{
+      if(cartctx.items.length===0){
+        setCount(0);
+      }
+    },[cartctx])
       
   return (
     <div>

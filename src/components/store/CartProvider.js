@@ -1,8 +1,9 @@
-import React from 'react'
+import React, { useState } from 'react'
 import CartContext from './cart-context'
 import { useReducer } from 'react'
 const initial_state={items:[],total:0}
 const cartReducer=(state,action)=>{
+    
     if(action.type==='ADD'){
         
         
@@ -49,9 +50,13 @@ const cartReducer=(state,action)=>{
         items:updateItems,
         total:updatedTotal
       }
+      
     
     }
-
+    if(action.type==='CLEAR'){
+        return initial_state;
+      }
+  return initial_state;
 }
 const CartProvider = (props) => {
     const[cartState,dispatchCart]=useReducer(cartReducer,initial_state);
@@ -63,11 +68,15 @@ const CartProvider = (props) => {
         dispatchCart({type:'REMOVE',id:id})
 
     }
+    const clearCart=()=>{
+        dispatchCart({type:'CLEAR'})
+    }
     const cartItem={
         items:cartState.items,
         total:cartState.total,
         addItemHandler:addItemToCartHandler,
-        removeItemHandler:removeItemFromCartHandler
+        removeItemHandler:removeItemFromCartHandler,
+        clearCartHandler:clearCart
     }
   return (
    

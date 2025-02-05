@@ -7,6 +7,8 @@ import Checkout from './Checkout';
 const Cart = (props) => {
     const cartCtx=useContext(CartContext);
     const[isOrderPlaced,setOrderPlaced]=useState(false)
+     const[isSubmitting,setIsSubmitting]=useState(false);
+    const[didSubmitted,setDidSubmitted]=useState(false);
     const orderHandler=()=>{
       setOrderPlaced(true);
     }
@@ -14,6 +16,7 @@ const Cart = (props) => {
       setOrderPlaced(false)
     }
     const submitCartHandler=async(userData)=>{
+      setIsSubmitting(true);
       const response=await fetch('https://foodorderapp-28bb4-default-rtdb.firebaseio.com/cart.json',
        {body:JSON.stringify({user:userData,orderDetails:cartCtx.items}),
        method:'POST',
@@ -21,18 +24,17 @@ const Cart = (props) => {
       })
       const data=await response.json();
       console.log(data);
-      cartCtx.clearCartHandler({type:'CLEAR'})
+      cartCtx.clearCartHandler();
+      setIsSubmitting(false);
+      setDidSubmitted(true);
 
     }
    const modalAction=<div>
    <button onClick={props.onClose}>close</button>
    <button onClick={orderHandler}>Order</button>
    </div>
-  return (
-    <>
-      <Modal onClick={props.onClose}>
-        <div className={classes.container} >Cart</div>
-        <ul className={classes.cartItem}>
+   const orderDetails=<>
+     <ul className={classes.cartItem}>
           {cartCtx.items.map((item) => {
             return(
                 <>
@@ -49,7 +51,15 @@ const Cart = (props) => {
        {isOrderPlaced&&<Checkout onCancel={onCancel} onConfirm={submitCartHandler}/>}
        {!isOrderPlaced&&modalAction }
        
-       
+   </>
+   const isSubmittingContent=<p>Sending order data</p>
+   const didSubmitContent=<p>Successfully ordered!!</p>
+  return (
+    <>
+      <Modal onClick={props.onClose}>
+       {!isSubmitting&&!didSubmitted&&orderDetails}
+       {isSubmitting&&isSubmittingContent}
+       {!isSubmitting&&didSubmitted&&didSubmitContent}
       </Modal>
     </>
   );
