@@ -13,6 +13,17 @@ const Cart = (props) => {
     const onCancel=()=>{
       setOrderPlaced(false)
     }
+    const submitCartHandler=async(userData)=>{
+      const response=await fetch('https://foodorderapp-28bb4-default-rtdb.firebaseio.com/cart.json',
+       {body:JSON.stringify({user:userData,orderDetails:cartCtx.items}),
+       method:'POST',
+       headers:{'Content-type':'application/json'}
+      })
+      const data=await response.json();
+      console.log(data);
+      cartCtx.clearCartHandler({type:'CLEAR'})
+
+    }
    const modalAction=<div>
    <button onClick={props.onClose}>close</button>
    <button onClick={orderHandler}>Order</button>
@@ -35,7 +46,7 @@ const Cart = (props) => {
           <h3>Total Amount</h3>
           <p className={classes.totalAmount}>Rs.{cartCtx.total}</p>
         </div>
-       {isOrderPlaced&&<Checkout onCancel={onCancel}/>}
+       {isOrderPlaced&&<Checkout onCancel={onCancel} onConfirm={submitCartHandler}/>}
        {!isOrderPlaced&&modalAction }
        
        

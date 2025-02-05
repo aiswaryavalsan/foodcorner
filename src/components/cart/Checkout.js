@@ -3,6 +3,7 @@ import classes from './Checkout.module.css'
 const isEmpty=(value)=>value.trim()==='';
 const isNotFiveChar=(value)=>value.trim().length!==5;
 const Checkout = (props) => {
+   
     const nameRef=useRef();
     const streetRef=useRef();
     const postalCodeRef=useRef();
@@ -19,14 +20,18 @@ const Checkout = (props) => {
          const streetIsValid=!isEmpty(street);
          const cityIsValid=!isEmpty(city);
          const postalIsValid=!isNotFiveChar(post);
+         const formValidity=isNameIsValid&&streetIsValid&&cityIsValid&&postalIsValid;
          setFormIsValid({
             name:isNameIsValid,
             street:streetIsValid,
             city:cityIsValid,
             post:postalIsValid
         })
-      
-
+        if(!formValidity){
+            return;
+        }
+      props.onConfirm({name,street,city,post})
+    
     }
   return (
     <form className={classes.form} onSubmit={handleCheckOut} >
